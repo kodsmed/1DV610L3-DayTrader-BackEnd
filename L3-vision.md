@@ -52,7 +52,7 @@ Webbserver: vite.
 Node: 20
 Language Backend: Typescript
 Language Frontend: Javascript, HTML/CSS
-APIer: Polygon.io API Stock API
+APIer: Finnhub.io Stock API
 
 |              |                                          |
 |--------------|------------------------------------------|

@@ -1,0 +1,32 @@
+{
+  "name": "l3-add-daytrader_game",
+  "version": "1.0.0",
+  "description": "an application aiming to follow the Clean Code principles and that utilize the graphdrawer module",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kodsmed/1DV610L3-DayTrader.git"
+  },
+  "author": "Jimmy Karlsson, jk224jv",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kodsmed/1DV610L3-DayTrader/issues"
+  },
+  "homepage": "https://github.com/kodsmed/1DV610L3-DayTrader#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.4",
+    "concurrently": "^8.2.1",
+    "nodemon": "^3.0.1",
+    "typescript": "^5.2.2"
+  }
+}

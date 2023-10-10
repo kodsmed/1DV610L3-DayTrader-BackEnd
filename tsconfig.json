@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "es2016",
+    "module": "ES2015",
+    "moduleResolution": "node",
+    "outDir": "./dist", // Output directory for compiled JavaScript
+    "declaration": true, // Generate declaration files (.d.ts) for TypeScript type definitions
+    "sourceMap": true,// Generate source maps (optional, but helpful for debugging)
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}

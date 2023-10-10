@@ -14,3 +14,23 @@ The game is built in Typescript, compiled to Javascript and can be served on any
 (The project comes preconfigured with Vite, but any web server will do.)  and then accessed through a web browser.  
 Due to limitations in the API used, the game is limited to the US stock market and a limited number of stocks,  
 also how fast the game can be played.
+
+## Usage
+
+### Installation
+
+1. Clone the repository
+2. Run `npm install` to install dependencies
+3. Get an API key from [Polygon.io](https://polygon.io/) and add it to the `.env` file.  
+4. change the name of the `.env.example` file to `.env`
+**Do not commit the API key!**   
+**NEVER SERVE API KEYS PUBLICLY!**
+3. Run `npm run launch` to start the vite server.
+4. Open `http://localhost:3000` in your browser
+
+### Development
+
+You can run ``npm run build` to compile the Typescript files to Javascript.
+Alternatively `npm run dev` is set up to watch for changes and compile on save.
+
+### Playing the game
