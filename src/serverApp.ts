@@ -12,7 +12,7 @@ import cors from 'cors'
 
 class Server {
   private server: Express | false;
-  private numberOfApiCallsLastInterval: number = 0;
+  private numberOfApiCallsThisInterval: number = 0;
   private readonly maxApiCallsPerInterval: number = 10;
   private apiCallsResetInterval: NodeJS.Timeout;
   private apiCallsQueue: Array<() => void> = [];
@@ -23,9 +23,10 @@ class Server {
     const windowSizeInMs = windowSizeInSeconds * 1000;
     // Reset the number of API calls every windowSizeInMs seconds and release the queued API calls in sequence.
     this.apiCallsResetInterval = setInterval(() => {
-      this.numberOfApiCallsLastInterval = 0;
+      this.numberOfApiCallsThisInterval = 0;
       // release up to maxApiCallsPerInterval queued API calls
       const releaseQueue = this.apiCallsQueue.splice(0, this.maxApiCallsPerInterval) as Array<() => void>;
+      this.numberOfApiCallsThisInterval = releaseQueue.length;
       releaseQueue.forEach((callback) => callback());
     }, windowSizeInMs);
     this.server = false;
@@ -115,11 +116,11 @@ class Server {
       // Middleware to count the number of API calls and queue them if they exceed the limit.
       app.use((req, res, next) => {
         if (req.url.startsWith('/api')) {
-          if (this.numberOfApiCallsLastInterval >= this.maxApiCallsPerInterval) {
+          if (this.numberOfApiCallsThisInterval >= this.maxApiCallsPerInterval) {
             this.apiCallsQueue.push(() => next());
             console.log ("\uD83D\uDCB2 [DayTrader]\uD83D\uDCB2 -> API call queued. Number of queued API calls: " + this.apiCallsQueue.length)
           } else {
-            this.numberOfApiCallsLastInterval++;
+            this.numberOfApiCallsThisInterval++;
             next();
           }
         } else {
